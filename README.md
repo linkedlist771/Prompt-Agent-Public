@@ -11,7 +11,7 @@ Prompt Agent is a web browser plugin that helps you enrich your prompts when usi
   Your browser does not support the video tag.
 </video>
 
-See Prompt Agent in action! This demo showcases how the browser extension seamlessly integrates with various LLM platforms to enhance your prompting experience.
+See Prompt Agent in action! This demo showcases how the browser extension seamlessly integrates with various LLM platforms to enhance your prompting experience. You can refer the video [here.](assets/Prompt-Agent-Demo.mp4)
 
 ## Installation
 
