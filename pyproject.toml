@@ -1,0 +1,37 @@
+[project]
+name = "prompt-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "apscheduler>=3.11.0",
+    "curl-cffi>=0.9.0",
+    "fake-useragent>=2.0.3",
+    "fastapi>=0.115.8",
+    "fire>=0.7.0",
+    "httpx>=0.28.1",
+    "loguru>=0.7.3",
+    "numpy>=2.2.3",
+    "openai>=1.64.0",
+    "pytz>=2025.1",
+    "tiktoken>=0.9.0",
+    "tortoise-orm[asyncpg]>=0.24.1",
+    "tqdm>=4.67.1",
+    "uvicorn>=0.34.0",
+    "dotenv>=0.9.9",
+    "openai>=1.91.0",
+    "chromadb>=1.0.13",
+    "redis[hiredis]>=6.2.0",
+    "selectolax>=0.3.30",
+    "granian>=2.4.0",
+    "aiofiles>=24.1.0",
+    "python-multipart>=0.0.20",
+]
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["prompt_agent*"]
+exclude = ["data*", "logs*", "js_scripts*", "chrome_extension*", "prompts_crawler*", "prompts_processor*"]

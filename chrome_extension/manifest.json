@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "一个优化你使用AI时候的prompt智能体",
+  "version": "0.0.9",
+  "description": "prompt-agent - AI chat enhancement tool",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://chat.deepseek.com/*",
+    "https://chatgpt.com/*",
+    "https://claude.ai/*",
+    "https://gemini.google.com/*",
+    "https://doubao.com/*",
+    "https://grok.com/*",
+    "https://tongyi.com/*",
+    "https://hunyuan.tencent.com/*",
+    "https://yuanbao.tencent.com/*",
+    "https://yiyan.baidu.com/*",
+    "https://www.perplexity.ai/*",
+    "http://127.0.0.1:3648/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Prompt Agent"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*/*",
+        "http://*/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_end",
+      "all_frames": false,
+      "world": "ISOLATED"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+} 

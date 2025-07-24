@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width: 320px;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .version {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .site-status {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .site-name {
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        
+        .site-desc {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .quick-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .toggle-text {
+            font-size: 14px;
+        }
+        
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+        }
+        
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.3);
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: #4CAF50;
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(20px);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .info-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .info-number {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        
+        .info-label {
+            font-size: 11px;
+            opacity: 0.8;
+        }
+        
+        .developer-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .developer-name {
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+        
+        .developer-link {
+            color: #87CEEB;
+            text-decoration: none;
+            font-size: 12px;
+        }
+        
+        .developer-link:hover {
+            text-decoration: underline;
+        }
+        
+        .action-button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .action-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+        
+        .footer {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            text-align: center;
+            font-size: 11px;
+            opacity: 0.8;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+        
+        .status-active {
+            background: #4CAF50;
+        }
+        
+        .status-inactive {
+            background: #f44336;
+        }
+        
+        .status-unknown {
+            background: #ff9800;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">🤖 Prompt Agent</div>
+        <div class="version">v0.0.9 - AI聊天增强工具</div>
+    </div>
+    
+    <div class="content">
+        <div class="site-status" id="siteStatus">
+            <div class="site-name" id="siteName">
+                <span class="status-indicator status-unknown"></span>
+                检测当前网站...
+            </div>
+            <div class="site-desc" id="siteDesc">正在分析当前页面...</div>
+        </div>
+        
+        <div class="quick-toggle">
+            <div class="toggle-text">启用AI增强</div>
+            <label class="toggle-switch">
+                <input type="checkbox" id="enableAgent">
+                <span class="slider"></span>
+            </label>
+        </div>
+        
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-number" id="supportedSites">11</div>
+                <div class="info-label">支持的AI平台</div>
+            </div>
+            <div class="info-item">
+                <div class="info-number" id="totalDomains">15</div>
+                <div class="info-label">支持的域名</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">开发者信息</div>
+            <div class="developer-info">
+                <div class="developer-name">👨‍💻 linkedlist771</div>
+                <a href="https://github.com/linkedlist771" target="_blank" class="developer-link">
+                    🔗 github.com/linkedlist771
+                </a>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">功能说明</div>
+            <div style="font-size: 12px; line-height: 1.5; opacity: 0.9;">
+                • 自动检测AI聊天网站<br>
+                • 智能优化输入内容<br>
+                • 支持知识库检索增强<br>
+                • 一键快捷操作(Ctrl+Enter)
+            </div>
+        </div>
+        
+        <button id="openSettings" class="action-button">
+            ⚙️ 打开详细设置
+        </button>
+    </div>
+    
+    <div class="footer">
+        专注于AI聊天体验优化 | 让AI更懂你
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
